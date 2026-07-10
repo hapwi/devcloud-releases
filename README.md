@@ -9,10 +9,14 @@ public release.
 
 ## Release channels
 
+Every beta uses `vMAJOR.MINOR.PATCH-beta.YYYYMMDD.N`, such as
+`v1.0.1-beta.20260709.11`. Stable production releases use only `vMAJOR.MINOR.PATCH`, such as
+`v1.0.1`, with no date or build suffix.
+
 Before `v1.0.0`, the newest beta-tagged build is the current public DevCloud release and is featured
-as **Latest**. Starting with `v1.0.0`, stable versions remain **Latest** while development builds for
-the next version, such as `v1.0.1-beta.1` or `v1.0.1-rc.1`, are published as prereleases. Promoting a
-tested candidate creates the matching stable release, such as `v1.0.1`.
+as **Latest**. Starting with `v1.0.0`, stable versions remain **Latest** while dated beta builds for
+the next version are published as prereleases. Promoting the tested line creates the matching stable
+release: `v1.0.1-beta.YYYYMMDD.N` becomes `v1.0.1` when it is ready for production.
 
 ## Add a computer
 

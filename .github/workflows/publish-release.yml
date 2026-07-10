@@ -17,6 +17,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           version="${GITHUB_REF_NAME#v}"
+          if [[ "$version" == *-beta.* ]] && [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+-beta\.[0-9]{8}\.[0-9]+$ ]]; then
+            echo "Beta versions must use MAJOR.MINOR.PATCH-beta.YYYYMMDD.N" >&2
+            exit 1
+          fi
+          if [[ "$version" != *-* ]] && [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Stable versions must use MAJOR.MINOR.PATCH with no date suffix" >&2
+            exit 1
+          fi
           awk -v heading="## $version" '
             $0 == heading { found = 1; next }
             found && /^## / { exit }
