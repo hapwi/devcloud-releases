@@ -3,6 +3,23 @@
 Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
 and behavior may continue to evolve before the first stable release.
 
+## 0.0.1-beta.20260710.17
+
+### Security
+
+- Removed browser storage for one-time pairing and CLI approval secrets.
+
+### Improved
+
+- Refined dashboard React health checks and removed unused UI components.
+
+## 0.0.1-beta.20260710.16
+
+### Fixed
+
+- Synchronized the production update channel with the `.16` CLI release so `devcloud update` receives
+  the newest published binary.
+
 ## 0.0.1-beta.20260710.15
 
 ### Improved
