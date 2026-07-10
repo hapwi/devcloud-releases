@@ -4,6 +4,9 @@ Public, checksum-verified DevCloud binaries for Linux, macOS, and 64-bit Windows
 source stays in the private `hapwi/devcloud` repository; this repository contains only release
 binaries, checksums, and the workflow that publishes the GitHub Release page.
 
+See [CHANGELOG.md](CHANGELOG.md) for the features, fixes, and security changes included in every
+public release.
+
 ## Add a computer
 
 1. Sign in at [www.dotflag.dev/dashboard](https://www.dotflag.dev/dashboard).

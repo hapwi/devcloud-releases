@@ -16,11 +16,21 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          version="${GITHUB_REF_NAME#v}"
+          awk -v heading="## $version" '
+            $0 == heading { found = 1; next }
+            found && /^## / { exit }
+            found { print }
+          ' CHANGELOG.md > release-notes.md
+          if [[ ! -s release-notes.md ]]; then
+            printf 'See the public changelog for this DevCloud release.\n' > release-notes.md
+          fi
           release_type="--latest"
           if [[ "$GITHUB_REF_NAME" == *-* ]]; then
             release_type="--prerelease"
           fi
           gh release create "$GITHUB_REF_NAME" \
             --title "DevCloud $GITHUB_REF_NAME" \
+            --notes-file release-notes.md \
             "$release_type" \
             devcloud-*

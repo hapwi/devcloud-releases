@@ -1,0 +1,74 @@
+# DevCloud changelog
+
+Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
+and behavior may continue to evolve before the first stable release.
+
+## 0.0.1-beta.20260709.8
+
+### Improved
+
+- Added a compact progress bar for CLI updates, including download, checksum verification,
+  installation, and service restart stages.
+- Added clearer up-to-date and successful-update messages.
+- Silenced harmless cleanup warnings from obsolete Linux and macOS background services.
+- Changed macOS upgrades to restart the existing LaunchAgent in place, avoiding repeated background
+  item registration during routine updates.
+
+## 0.0.1-beta.20260709.7
+
+### Added
+
+- Added `devcloud connect <machine>` for secure SSH between enrolled computers.
+- Added short-lived, single-use SSH access grants restricted to online devices in the same cloud.
+- Added strict SSH host-key pinning and explicit approval for legitimate host-key changes.
+- Added SSH readiness details and readable SSH session events to the dashboard.
+
+### Security
+
+- SSH travels through the target's outbound managed tunnel; raw port 22 is never exposed publicly.
+- DevCloud does not collect private SSH keys or account passwords. OpenSSH continues to perform normal
+  user authentication.
+
+## 0.0.1-beta.20260709.6
+
+### Fixed
+
+- Fixed Unix self-updates so the background service always keeps the stable DevCloud executable path.
+- Deduplicated multiple detected HTTP listeners belonging to the same development-server process.
+
+## 0.0.1-beta.20260709.5
+
+### Improved
+
+- Simplified private project-link management and HTTP development-server detection.
+- Made enrolled-device authorization pages persistent instead of redirecting to an unavailable local
+  URL after a failed handoff.
+- Reworked security activity into readable device-to-device access events.
+
+## 0.0.1-beta.20260709.4
+
+### Fixed
+
+- Added safe migration for computers enrolled with the earlier DevCloud credential layout.
+- Preserved existing device enrollment while moving to the current agent configuration and service.
+
+## 0.0.1-beta.20260709.3
+
+### Added
+
+- Added native Windows x64 CLI releases, PowerShell installation, checksum verification, and an
+  on-logon background task.
+
+## 0.0.1-beta.20260709.2
+
+### Security
+
+- Moved public downloads into the dedicated `devcloud-releases` repository so application source can
+  remain private.
+- Added a SHA-256 checksum file for every supported binary.
+
+## 0.0.1-beta.20260709.1
+
+### Added
+
+- Introduced dated beta versioning and the checksum-verified `devcloud update` release channel.
