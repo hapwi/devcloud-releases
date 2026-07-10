@@ -3,6 +3,20 @@
 Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
 and behavior may continue to evolve before the first stable release.
 
+## 0.0.1-beta.20260710.15
+
+### Improved
+
+- Stream machine, service, and security activity changes to signed-in dashboards through an
+  authenticated Convex subscription instead of five-second machine polling.
+- Detect local listener changes every two seconds while sending backend updates only when services
+  change, preserving the normal one-minute presence heartbeat.
+
+### Security
+
+- Derive realtime dashboard ownership exclusively from the verified Clerk identity inside Convex and
+  return only the existing public machine projection, never device tokens or tunnel credentials.
+
 ## 0.0.1-beta.20260710.14
 
 ### Improved
