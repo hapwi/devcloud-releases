@@ -25,12 +25,8 @@ jobs:
           if [[ ! -s release-notes.md ]]; then
             printf 'See the public changelog for this DevCloud release.\n' > release-notes.md
           fi
-          release_type="--latest"
-          if [[ "$GITHUB_REF_NAME" == *-* ]]; then
-            release_type="--prerelease"
-          fi
           gh release create "$GITHUB_REF_NAME" \
             --title "DevCloud $GITHUB_REF_NAME" \
             --notes-file release-notes.md \
-            "$release_type" \
+            --latest \
             devcloud-*
