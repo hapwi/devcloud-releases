@@ -3,6 +3,14 @@
 Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
 and behavior may continue to evolve before the first stable release.
 
+## 0.0.1-beta.20260710.14
+
+### Improved
+
+- Added a direct link to the machines dashboard after approving a CLI login.
+- Replaced the plain device-verification handoff with a polished DevCloud connection screen and a
+  clear manual fallback while the private project opens.
+
 ## 0.0.1-beta.20260710.13
 
 ### Added
