@@ -3,6 +3,22 @@
 Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
 and behavior may continue to evolve before the first stable release.
 
+## 0.0.1-beta.20260710.13
+
+### Added
+
+- Require both an enrolled device and an active `devcloud login` session before issuing HTTP or SSH
+  project-access grants.
+- Show device enrollment, account login, project authorization, session expiration, local agent, and
+  tunnel state in the modernized `devcloud status` output.
+
+### Security
+
+- Bind private-link browser sessions to the approving CLI session, so logout revokes linked browser
+  access and expired or removed sessions fail on the next request.
+- Re-authorize older CLI sessions through the normal `devcloud login` flow to add the new
+  `projects:access` scope without re-enrolling the computer.
+
 ## 0.0.1-beta.20260709.12
 
 ### Fixed
