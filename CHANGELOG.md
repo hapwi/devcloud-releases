@@ -3,6 +3,31 @@
 Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
 and behavior may continue to evolve before the first stable release.
 
+## 0.0.1-beta.20260709.9
+
+### Added
+
+- Added `devcloud login`, `logout`, `account`, and `machines` for browser-approved CLI management.
+- Added 30-day, read-only CLI sessions with one-time browser approval and remote logout revocation.
+- Added durable 30-day private-link browser sessions that survive agent restarts.
+
+### Improved
+
+- Private links now return a generic 404 until a loopback DevCloud agent proves the viewing computer
+  belongs to the same cloud; only then is device verification shown.
+- Existing readable machine routes migrate automatically to globally unique 128-bit routing IDs
+  without re-pairing the computer.
+- Added clearer recovery guidance when an older CLI cannot open an SSH authorization tunnel.
+
+### Security
+
+- CLI and private-link session secrets are stored only as SHA-256 hashes in the control plane.
+- CLI login uses a 256-bit proof-bound credential, ten-minute approval request, explicit Clerk approval,
+  scoped access, same-origin approval checks, and rate limits.
+- Removing either enrolled machine rejects its private-link sessions on the next request or WebSocket
+  handshake.
+- Machine names remain friendly dashboard/CLI aliases and are never reused as public DNS identities.
+
 ## 0.0.1-beta.20260709.8
 
 ### Improved
