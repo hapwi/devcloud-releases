@@ -3,6 +3,13 @@
 Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
 and behavior may continue to evolve before the first stable release.
 
+## 0.0.1-beta.20260709.12
+
+### Fixed
+
+- Removed the automatic loopback probe from private-link 404 pages, avoiding Chrome's local-network
+  permission prompt. Device verification now starts only when the visitor selects its link.
+
 ## 0.0.1-beta.20260709.11
 
 ### Fixed
