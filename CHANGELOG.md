@@ -3,6 +3,14 @@
 Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
 and behavior may continue to evolve before the first stable release.
 
+## 0.0.1-beta.20260709.10
+
+### Fixed
+
+- Allowed the private-link 404 gate to probe only the fixed DevCloud loopback agent endpoint, so an
+  enrolled same-cloud device can reveal the Verify button without weakening the page's default-deny
+  Content Security Policy.
+
 ## 0.0.1-beta.20260709.9
 
 ### Added
