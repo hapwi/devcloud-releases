@@ -3,6 +3,13 @@
 Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
 and behavior may continue to evolve before the first stable release.
 
+## 0.0.1-beta.20260709.11
+
+### Fixed
+
+- Excluded the DevCloud agent and its managed `cloudflared` process from detected project services,
+  so internal loopback listeners such as the Cloudflare metrics endpoint are not shown in the dashboard.
+
 ## 0.0.1-beta.20260709.10
 
 ### Fixed
