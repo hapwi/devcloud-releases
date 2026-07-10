@@ -7,6 +7,13 @@ binaries, checksums, and the workflow that publishes the GitHub Release page.
 See [CHANGELOG.md](CHANGELOG.md) for the features, fixes, and security changes included in every
 public release.
 
+## Release channels
+
+Before `v1.0.0`, the newest beta-tagged build is the current public DevCloud release and is featured
+as **Latest**. Starting with `v1.0.0`, stable versions remain **Latest** while development builds for
+the next version, such as `v1.0.1-beta.1` or `v1.0.1-rc.1`, are published as prereleases. Promoting a
+tested candidate creates the matching stable release, such as `v1.0.1`.
+
 ## Add a computer
 
 1. Sign in at [www.dotflag.dev/dashboard](https://www.dotflag.dev/dashboard).
