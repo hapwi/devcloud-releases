@@ -42,4 +42,6 @@ jobs:
             --title "DevCloud $GITHUB_REF_NAME" \
             --notes-file release-notes.md \
             "$release_type" \
-            devcloud-*
+            devcloud-* \
+            release-manifest.txt \
+            release-manifest.txt.sig
