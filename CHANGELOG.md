@@ -3,6 +3,27 @@
 Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
 and behavior may continue to evolve before the first stable release.
 
+## 0.2.0-beta.20260713.1
+
+### Added
+
+- Added interactive `devcloud expose` and `devcloud unexpose` commands, while preserving explicit
+  port arguments for scripts and automation.
+- Added machine enrollment directly from the Machines view.
+
+### Changed
+
+- Extended private-project sessions to 30 days while continuing to validate browser enrollment and
+  revocation on every request.
+- Replaced the recurring private-link verification prompt with an automatic trusted-browser handoff.
+- Simplified machine enrollment and browser verification into compact Shadcn flows with a brief
+  animated success state for newly trusted browsers.
+
+### Fixed
+
+- Removed stale Cloudflare ingress and DNS records when a project port is unexposed.
+- Prevented returning trusted browsers from being presented as newly verified on every project open.
+
 ## 0.1.0-beta.20260713.1
 
 ### Added
