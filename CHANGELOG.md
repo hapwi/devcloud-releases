@@ -3,6 +3,36 @@
 Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
 and behavior may continue to evolve before the first stable release.
 
+## 0.1.0-beta.20260712.1
+
+### Added
+
+- Added device-to-device computer enrollment through native Approve/Deny notifications, a terminal
+  approval fallback, and five-minute comparison codes.
+- Added a terminal QR to `devcloud join` and a signed-in mobile approval page, allowing an unconnected
+  phone to approve a new computer when its frontend account matches the initiating CLI account.
+- Added an in-app rear-camera scanner for mobile pairing with same-origin QR validation and manual-code
+  fallback.
+
+### Security
+
+- Added signed release manifests, embedded-version and checksum validation, semantic downgrade
+  prevention, atomic installation, and rollback when service restart fails.
+- Added expiring machine credentials with automatic refresh and a short previous-token grace period so
+  rotation does not interrupt active agents.
+- Added shared control-plane rate limits, Cloudflare quotas, provisioning leases, normalized external
+  identifiers, stricter browser mutation guards, and safer tunnel cleanup behavior.
+- Kept join, machine, CLI, and mobile credentials capability-separated; enrollment secrets remain
+  single-use, hashed at rest, and confined to URL fragments when represented in QR links.
+
+### Improved
+
+- Show real downloaded bytes and percentage during agent updates, with distinct signature, checksum,
+  install, and restart stages.
+- Cache background release checks, expose update state in `devcloud status`, and show interactive users
+  a compact update reminder at most once per day without slowing commands or contaminating JSON output.
+- Expanded enrollment, mobile pairing, Cloudflare, Convex, release, and security documentation.
+
 ## 0.0.1-beta.20260710.17
 
 ### Security
