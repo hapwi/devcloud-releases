@@ -1,35 +1,78 @@
-# DevCloud releases
+# DevCloud
 
-Public, checksum-verified DevCloud binaries for Linux, macOS, and 64-bit Windows. The application
-source stays in the private `hapwi/devcloud` repository; this repository contains only release
-binaries, checksums, and the workflow that publishes the GitHub Release page.
+**Your development environment, everywhere.**
 
-See [CHANGELOG.md](CHANGELOG.md) for the features, fixes, and security changes included in every
-public release.
+DevCloud turns the computers you already own into a private development cloud. Open local projects
+from another computer or your phone, connect to your machines over SSH, and keep building without
+moving your code or exposing your network.
 
-## Release channels
+[Get started](https://www.dotflag.dev) · [Open the dashboard](https://www.dotflag.dev/dashboard) ·
+[See what’s new](CHANGELOG.md)
 
-Every beta uses `vMAJOR.MINOR.PATCH-beta.YYYYMMDD.N`, such as
-`v1.0.1-beta.20260709.11`. Stable production releases use only `vMAJOR.MINOR.PATCH`, such as
-`v1.0.1`, with no date or build suffix.
+## Your machines. One private cloud.
 
-Before `v1.0.0`, the newest beta-tagged build is the current public DevCloud release and is featured
-as **Latest**. Starting with `v1.0.0`, stable versions remain **Latest** while dated beta builds for
-the next version are published as prereleases. Promoting the tested line creates the matching stable
-release: `v1.0.1-beta.YYYYMMDD.N` becomes `v1.0.1` when it is ready for production.
+DevCloud gives your local development services stable, private HTTPS links that travel with you.
+Keep your existing setup, framework, editor, and hardware—DevCloud handles the secure connection.
 
-## Add a computer
+- **Build with what you already use.** Next.js, Vite, Astro, Rails, local APIs, and anything else
+  that serves HTTP all work the same way.
+- **Open localhost from anywhere.** Reach a project from another enrolled computer or a paired phone
+  without router configuration or port forwarding.
+- **Connect to your computers.** Use secure SSH between enrolled machines through DevCloud’s managed
+  outbound connection.
+- **Stay private by default.** Projects are available only to devices you explicitly trust, and
+  access can be revoked from the dashboard.
 
-1. Sign in at [www.dotflag.dev/dashboard](https://www.dotflag.dev/dashboard).
-2. Select **Add machine** and create a one-time device request.
-3. Choose **macOS / Linux** or **Windows**.
-4. Run the generated command on the computer being added.
-5. Approve the request in the browser opened on that computer.
+## Start in a few minutes
 
-The generated command includes a single-use pairing secret. Do not copy that command to another
-computer or share it with anyone.
+1. Sign in to the [DevCloud dashboard](https://www.dotflag.dev/dashboard).
+2. Select **Add machine** and choose your operating system.
+3. Run the generated one-time command on the computer you want to add.
+4. Approve the request and start your project normally.
 
-## Install or update an already paired computer
+Then expose its local port:
+
+```sh
+# Run your app as usual
+pnpm dev
+
+# Give its local port a private DevCloud link
+devcloud expose 3000 web
+```
+
+DevCloud returns a private HTTPS address for your project. No deployment, repository migration, or
+changes to your app are required.
+
+## Take your projects with you
+
+Pair a phone to open private project links on mobile:
+
+```sh
+devcloud mobile pair
+```
+
+Connect from one enrolled computer to another over SSH:
+
+```sh
+devcloud connect home-server
+```
+
+Phones can open private HTTP projects. SSH remains restricted to enrolled computers, where your
+normal SSH keys and host verification continue to protect the session.
+
+## Private by design
+
+DevCloud is built around explicit device trust rather than public links.
+
+- Connections leave your computer through managed outbound tunnels; inbound ports stay closed.
+- Pairing requests are short-lived, single-use, and require approval.
+- Project and SSH access are limited to devices in the same private cloud.
+- Removing a machine or phone revokes its access.
+- Updates are checksum-verified against a signed release manifest before installation.
+
+## Install or update DevCloud
+
+Already have a paired machine? Install or repair the background agent with the official installer.
 
 Linux and macOS:
 
@@ -43,43 +86,29 @@ Windows PowerShell:
 irm https://www.dotflag.dev/install.ps1 | iex
 ```
 
-The installer detects the platform, downloads the version selected by the DevCloud control plane,
-verifies its SHA-256 checksum, replaces the existing binary, and restarts the background service.
+Check your connection or install the newest release at any time:
 
-After installation:
-
-```text
-devcloud --version
+```sh
 devcloud status
-```
-
-## Share a local project
-
-Start the project normally, then expose its HTTP port:
-
-```text
-bun dev
-devcloud expose 3000 app
-```
-
-DevCloud returns a private HTTPS link. Only a computer enrolled in the same cloud can open it; being
-signed into the dashboard in a browser does not make that browser an enrolled device.
-
-## Update from the CLI
-
-```text
 devcloud update --check
 devcloud update
 ```
 
-## Release assets
+## Platform support
 
-Each release contains:
+DevCloud provides native agents for:
 
-- `devcloud-linux-x86_64` and `devcloud-linux-aarch64`
-- `devcloud-macos-x86_64` and `devcloud-macos-aarch64`
-- `devcloud-windows-x86_64.exe`
-- one `.sha256` file for every binary
+- Linux on x86_64 and ARM64
+- macOS on Apple silicon and Intel
+- Windows 10/11 on x86_64
 
-Windows 10/11 x64 is native. Windows 11 ARM uses Windows' x64 compatibility support because the
-pinned Cloudflare tunnel client does not currently provide a native Windows ARM64 executable.
+Windows 11 on ARM can run the x86_64 agent through Windows compatibility support.
+
+## About this repository
+
+This is DevCloud’s official public download channel. Each release includes the platform binaries,
+individual SHA-256 checksums, a signed release manifest, and customer-facing release notes in the
+[changelog](CHANGELOG.md).
+
+DevCloud is currently in beta and improving quickly. The newest published beta is the recommended
+version until the first stable release.
