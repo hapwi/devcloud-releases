@@ -3,6 +3,23 @@
 Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
 and behavior may continue to evolve before the first stable release.
 
+## 0.2.0-beta.20260713.3
+
+### Security
+
+- Replaced 30-day private-project sessions with one-hour sessions that renew through a fresh trusted-
+  browser key proof, while retaining transparent cookie transport for arbitrary HTTP, WebSocket, SSE,
+  and HMR services.
+- Tightened the host-only gateway cookie to `SameSite=Strict` and capped its browser lifetime to the
+  server-issued session lifetime.
+
+### Fixed
+
+- Preserved host-only application cookies through private project links while continuing to hide the
+  DevCloud authorization cookie and reject parent-domain cookies from localhost services.
+- Preserved URL fragments during trusted-browser authorization so one-time pairing links reach the
+  proxied application intact.
+
 ## 0.2.0-beta.20260713.2
 
 ### Fixed
