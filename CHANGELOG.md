@@ -3,6 +3,23 @@
 Public release notes for the DevCloud CLI and device agent. DevCloud is currently in beta, so commands
 and behavior may continue to evolve before the first stable release.
 
+## 0.1.0-beta.20260713.1
+
+### Added
+
+- Added signed-in trusted-browser authorization with non-exportable P-256 keys, exact request binding,
+  short proof lifetimes, atomic replay protection, and per-browser revocation.
+- Added a privacy-focused landing-page section explaining that DevCloud does not capture source code,
+  retain request or response bodies, or keep project traffic logs.
+
+### Changed
+
+- Replaced phone-cookie and QR pairing with automatic browser-key enrollment after Clerk sign-in.
+- Reduced project sessions to one hour and continued validating them on every HTTP request and
+  WebSocket handshake.
+- Focused DevCloud on private HTTP, WebSocket, SSE, and development-server HMR links. Secure-shell
+  commands, routes, gateway bridging, dashboard controls, and plan claims have been removed.
+
 ## 0.1.0-beta.20260712.3
 
 ### Fixed
